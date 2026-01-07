@@ -1,7 +1,9 @@
 ---
+import { getCollection } from "astro:content";
 import Welcome from "../components/Welcome.astro";
 import Layout from "../layouts/Layout.astro";
 
+const books = await getCollection("books");
 ---
 
 <Layout lay>
@@ -11,5 +13,34 @@ import Layout from "../layouts/Layout.astro";
 			Dev 👨‍💻
 			<span class="block">Books</span>
 		</h1>
+
+		<div class="grid gap-6 md:grid-cols-2">
+			{
+				books.map((book) => {
+					const { slug, data } = book;
+
+					const { title, author, img, readtime, description, buy } = data;
+
+					return (
+						<article class="flex">
+							<a
+								href={`/libros/${slug}`}
+								class="mb-2 xl:mb-0 transition hover:scale-110"
+							>
+								<img src={`/${img}`} alt={title} class="mr-5 w-48 rounded-lg" />
+							</a>
+
+							<div class="flex flex-col justify-center">
+								<h3 class="mb-2 text-2xl font-bold leading-tight text-white">{title}</h3>
+
+								<p class="mb-4 text-gray-300 max-w-sm">{description}</p>
+								<span class="text-xs">⌛Lectura en {readtime} minutos</span>
+							</div>
+
+						</article>
+					);
+				})
+			}
+		</div>
 	</main>
 </Layout>
