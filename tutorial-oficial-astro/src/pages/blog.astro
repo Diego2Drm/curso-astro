@@ -2,6 +2,7 @@
 const pageTitle: string = "My Astro Learning Blog";
 import "../styles/global.css";
 import Navigation from "../components/Navigation.astro";
+import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 ---
 
@@ -12,7 +13,7 @@ import Footer from "../components/Footer.astro";
     <title>{pageTitle}</title>
   </head>
   <body>
-    <Navigation />
+    <Header />
     <h1>{pageTitle}</h1>
     <p>This is where I will post about my journey learning Astro.</p>
     <ul>
@@ -22,5 +23,9 @@ import Footer from "../components/Footer.astro";
     </ul>
 
     <Footer />
+
+    <script>
+      import "../sccripts/menu";
+    </script>
   </body>
 </html>
