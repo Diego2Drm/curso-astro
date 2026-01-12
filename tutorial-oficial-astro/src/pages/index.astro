@@ -1,9 +1,10 @@
 ---
 const pageTitle: string = "Home Page";
-import "../styles/global.css";
-import Navigation from "../components/Navigation.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+// import "../styles/global.css";
+// import Navigation from "../components/Navigation.astro";
+// import Header from "../components/Header.astro";
+// import Footer from "../components/Footer.astro";
+import BaseLayout from "../layout/BaseLayout.astro";
 ---
 
 <html lang="en">
@@ -15,11 +16,14 @@ import Footer from "../components/Footer.astro";
 		<title>{pageTitle}</title>
 	</head>
 	<body>
-		<Header />
+		<!-- <Header />
 
 		<h1>My Astro Site {pageTitle}</h1>
 
-		<Footer />
+		<Footer /> -->
+		<BaseLayout pageTitle={pageTitle}>
+			<h2>My Astro Site</h2>
+		</BaseLayout>
 	</body>
 
 	<script>
